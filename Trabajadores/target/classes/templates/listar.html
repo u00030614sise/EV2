@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Trabajadores</title>
+</head>
+<body>
+    <h1>Lista de Trabajadores</h1>
+    <a href="/trabajadores/nuevo">Registrar Nuevo Trabajador</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Número Documento</th>
+                <th>Fecha Nacimiento</th>
+                <th>Dirección</th>
+                <th>Meses Trabajados</th>
+                <th>Tipo Seguro</th>
+                <th>Sueldo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="trabajador : ${trabajadores}">
+                <td th:text="${trabajador.id}"></td>
+                <td th:text="${trabajador.nombre}"></td>
+                <td th:text="${trabajador.apellidoPaterno}"></td>
+                <td th:text="${trabajador.apellidoMaterno}"></td>
+                <td th:text="${trabajador.numeroDocumento}"></td>
+                <td th:text="${trabajador.fechaNacimiento}"></td>
+                <td th:text="${trabajador.direccion}"></td>
+                <td th:text="${trabajador.mesesTrabajados}"></td>
+                <td th:text="${trabajador.tipoSeguro}"></td>
+                <td th:text="${trabajador.sueldo}"></td>
+                <td>
+                    <a th:href="@{'/trabajadores/editar/' + ${trabajador.id}}">Editar</a>
+                    <a th:href="@{'/trabajadores/eliminar/' + ${trabajador.id}}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
